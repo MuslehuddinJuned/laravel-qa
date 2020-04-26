@@ -11,8 +11,14 @@
                     @foreach ($questions as $question)
                         <div class="media">
                             <div class="media-body">
-                                <h3 class="mt-0">{{ $question->title}}</h3>
+                            <h3 class="mt-0"><a href="questions/{{$question->id}}">{{$question->title}}</a></h3>
+                            <p class="lead">
+                                Asked by <a href="{{$question->user->url}}">{{$question->user->name}}</a>
+                            <small class="text-muted">{{$question->created_at->diffForHumans()}}</small>
+                            </p>
+                            <p>
                                 {{ \Illuminate\Support\Str::limit($question->body, 250, '  (more . . . )') }}
+                            </p>
                             </div>                           
                         </div>
                         <hr> 
