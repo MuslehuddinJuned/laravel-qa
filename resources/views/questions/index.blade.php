@@ -5,7 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"><h1> Questions</h1></div>
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h1> Questions</h1>                    
+                        <div class="ml-auto">
+                            <a href="questions/create" class="btn btn-outline-secondary">Ask Questions</a>
+                        </div>
+                    </div>
+                    
+                </div>
 
                 <div class="card-body">
                     @foreach ($questions as $question)
