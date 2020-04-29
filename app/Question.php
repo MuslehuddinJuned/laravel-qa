@@ -18,6 +18,10 @@ class Question extends Model
         $this->attributes['slug'] = Str::slug($value, '-');
     }
 
+    // public function getUrlAttribute(){
+    //     return route("questions.show", $this->id);
+    // }
+
     public function getStatusAttribute(){
         if ($this->answers>0){
             if($this->best_answer_id){

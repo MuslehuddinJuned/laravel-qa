@@ -9,7 +9,7 @@
                     <div class="d-flex align-items-center">
                         <h1> Questions</h1>                    
                         <div class="ml-auto">
-                            <a href="questions/create" class="btn btn-outline-secondary">Ask Questions</a>
+                            <a href="{{route('questions.create')}}" class="btn btn-outline-secondary">Ask Questions</a>
                         </div>
                     </div>
                     
