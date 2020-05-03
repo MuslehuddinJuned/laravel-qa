@@ -64,7 +64,7 @@
                                 <a title="This question is not useful" class="vote-down off">
                                     <i class="fas fa-caret-down fa-4x" aria-hidden="true"></i>
                                 </a>
-                                <a title="Mark this answer as best answer" class="vote-accepted mt-2">
+                                <a title="Mark this answer as best answer" class="{{$answer->status}} mt-2">
                                     <i class="fas fa-check fa-2x"></i><br/>
                                 </a>
                             </div>
