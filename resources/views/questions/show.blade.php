@@ -87,5 +87,27 @@
             </div>
         </div>
     </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Post your Answer</h2>
+                </div>
+                <div class="card-body">
+                    <form action="{{route('questions.answers.store', $question->id)}}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <textarea name="body" class="form-control {{ $errors->has('body') ? 'is-invalid' : ''}}" rows="10">{{old('body')}}</textarea>
+                            @if($errors->has('body'))
+                                <div class="invalid-feedback">
+                                    <strong>{{ $errors->first('body')}}</strong>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-lg btn-outline-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
 </div>
 @endsection
