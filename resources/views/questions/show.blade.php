@@ -15,14 +15,31 @@
                     
                 </div>
 
-                <div class="card-body">                    
-                    {!! parsedown($question->body) !!}
-                    <div class="float-right">
-                        <span class="text-muted">Answered {{$question->created_at->diffForHumans()}}</span>
-                        <div class="media mt-2">
-                            <a href="{{$question->user->url}}" class="pr-2"><img src="{{$question->user->avatar}}" alt=""></a>
-                            <div class="media-body mt-1">
-                                <a href="{{$question->user->url}}">{{$question->user->name}}</a>
+                <div class="card-body"> 
+                    <div class="media">
+                        <div class="d-flex flex-column vote-controls">
+                            <a title="This question is useful" class="vote-up">
+                                <i class="fas fa-caret-up fa-4x" aria-hidden="true"></i>
+                            </a>
+                            <span class="votes-count">1230</span>
+                            <a title="This question is not useful" class="vote-down off">
+                                <i class="fas fa-caret-down fa-4x" aria-hidden="true"></i>
+                            </a>
+                            <a title="Click to mark as favorite question (Click again to undo)" class="favorite mt-2 favorited">
+                                <i class="fas fa-star fa-2x"></i><br/>
+                                <span class="favorites-count">123</span>
+                            </a>
+                        </div>
+                        <div class="media-body">                   
+                            {!! parsedown($question->body) !!}
+                            <div class="float-right">
+                                <span class="text-muted">Answered {{$question->created_at->diffForHumans()}}</span>
+                                <div class="media mt-2">
+                                    <a href="{{$question->user->url}}" class="pr-2"><img src="{{$question->user->avatar}}" alt=""></a>
+                                    <div class="media-body mt-1">
+                                        <a href="{{$question->user->url}}">{{$question->user->name}}</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -38,13 +55,29 @@
                 </div>
                 @foreach ($question->answers as $answer)
                     <div class="card-body">
-                        {!! parsedown($answer->body) !!}
-                        <div class="float-right">
-                            <span class="text-muted">Answered {{$answer->created_at->diffForHumans()}}</span>
-                            <div class="media mt-2">
-                                <a href="{{$answer->user->url}}" class="pr-2"><img src="{{$answer->user->avatar}}" alt=""></a>
-                                <div class="media-body mt-1">
-                                    <a href="{{$answer->user->url}}">{{$answer->user->name}}</a>
+                        <div class="media">
+                            <div class="d-flex flex-column vote-controls">
+                                <a title="This question is useful" class="vote-up">
+                                    <i class="fas fa-caret-up fa-4x" aria-hidden="true"></i>
+                                </a>
+                                <span class="votes-count">1230</span>
+                                <a title="This question is not useful" class="vote-down off">
+                                    <i class="fas fa-caret-down fa-4x" aria-hidden="true"></i>
+                                </a>
+                                <a title="Mark this answer as best answer" class="vote-accepted mt-2">
+                                    <i class="fas fa-check fa-2x"></i><br/>
+                                </a>
+                            </div>
+                            <div class="media-body"> 
+                                {!! parsedown($answer->body) !!}
+                                <div class="float-right">
+                                    <span class="text-muted">Answered {{$answer->created_at->diffForHumans()}}</span>
+                                    <div class="media mt-2">
+                                        <a href="{{$answer->user->url}}" class="pr-2"><img src="{{$answer->user->avatar}}" alt=""></a>
+                                        <div class="media-body mt-1">
+                                            <a href="{{$answer->user->url}}">{{$answer->user->name}}</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
