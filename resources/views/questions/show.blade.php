@@ -47,6 +47,8 @@
             </div>
         </div>
     </div>
+
+
     <div class="row justify-content-center mt-4">
         <div class="col-md-12">
             <div class="card">
@@ -64,9 +66,21 @@
                                 <a title="This question is not useful" class="vote-down off">
                                     <i class="fas fa-caret-down fa-4x" aria-hidden="true"></i>
                                 </a>
-                                <a title="Mark this answer as best answer" class="{{$answer->status}} mt-2">
-                                    <i class="fas fa-check fa-2x"></i><br/>
-                                </a>
+                                @can ('accept', $answer)
+                                    <a title="Mark this answer as best answer" class="{{$answer->status}} mt-2"
+                                        onclick="event.preventDefault(); document.getElementById('accept-answer-{{ $answer->id }}').submit();">
+                                        <i class="fas fa-check fa-2x"></i><br/>
+                                    </a>
+                                    <form id="accept-answer-{{ $answer->id }}" action="{{ route('answers.accept', $answer->id) }}" method="POST" style="display:none;">
+                                        @csrf
+                                    </form>
+                                @else
+                                    @if($question->best_answer_id == $answer->id)
+                                    <a title="Question owner accepted this answer as best answer" class="{{$answer->status}} mt-2">
+                                        <i class="fas fa-check fa-2x"></i><br/>
+                                    </a>
+                                    @endif
+                                @endcan
                             </div>
                             <div class="media-body"> 
                                 {!! parsedown($answer->body) !!}
@@ -106,6 +120,8 @@
             </div>
         </div>
     </div>
+
+
     <div class="row justify-content-center mt-4">
         <div class="col-md-12">
             <div class="card">
