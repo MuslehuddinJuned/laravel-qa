@@ -50,7 +50,7 @@
                             <small class="text-muted">{{$question->created_at->diffForHumans()}}</small>
                             </p>
                             <p>
-                                {{ \Illuminate\Support\Str::limit($question->body, 250, '  (more . . . )') }}
+                                {{ \Illuminate\Support\Str::limit(strip_tags($question->body), 250, '  (more . . . )') }}
                             </p>
                             </div>                           
                         </div>
