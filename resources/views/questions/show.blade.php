@@ -52,13 +52,11 @@
                         </div>
                         <div class="media-body">                   
                             {!! parsedown($question->body) !!}
-                            <div class="float-right">
-                                <span class="text-muted">Answered {{$question->created_at->diffForHumans()}}</span>
-                                <div class="media mt-2">
-                                    <a href="{{$question->user->url}}" class="pr-2"><img src="{{$question->user->avatar}}" alt=""></a>
-                                    <div class="media-body mt-1">
-                                        <a href="{{$question->user->url}}">{{$question->user->name}}</a>
-                                    </div>
+                            <div class="row">
+                                <div class="col-4"></div>
+                                <div class="col-4"></div>
+                                <div class="col-4">
+                                    <user-info :model="{{ $question }}" label="Asked"></user-info>
                                 </div>
                             </div>
                         </div>
@@ -135,13 +133,7 @@
 
                                     </div>
                                     <div class="col-4">
-                                        <span class="text-muted">Answered {{$answer->created_at->diffForHumans()}}</span>
-                                        <div class="media mt-2">
-                                            <a href="{{$answer->user->url}}" class="pr-2"><img src="{{$answer->user->avatar}}" alt=""></a>
-                                            <div class="media-body mt-1">
-                                                <a href="{{$answer->user->url}}">{{$answer->user->name}}</a>
-                                            </div>
-                                        </div>
+                                        <user-info :model="{{ $answer }}" label="Answered"></user-info>
                                     </div>
                                 </div>
                             </div>

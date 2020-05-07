@@ -9,6 +9,8 @@ class Question extends Model
 {
     protected $fillable = ['title', 'body'];
 
+    protected $appends = ['created_date'];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -20,6 +22,11 @@ class Question extends Model
 
     public function getUrlAttribute(){
         return route("questions.show", $this->slug);
+    }
+
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
     }
 
     public function getStatusAttribute(){
