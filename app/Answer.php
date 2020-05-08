@@ -8,7 +8,7 @@ class Answer extends Model
 {
     protected $fillable = ['body', 'user_id'];
     
-    protected $appends = ['created_date'];
+    protected $appends = ['created_date', 'body_html'];
 
     public function question(){
         return $this->belongsTo(Question::class);
@@ -16,6 +16,12 @@ class Answer extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function getBodyHtmlAttribute()
+    {
+        // return clean(\Parsedown::instance()->text($this->body));
+        return \Parsedown::instance()->text($this->body);
     }
 
     public static function boot(){
