@@ -18,33 +18,8 @@
                 <div class="card-body"> 
                     <div class="media">
                         <div class="d-flex flex-column vote-controls">
-                            <a title="This question is useful" 
-                                class="vote-up {{Auth::guest() ? 'off' : ''}}"
-                                onclick="event.preventDefault(); document.getElementById('up-vote-question-{{ $question->id }}').submit();">
-                                <i class="fas fa-caret-up fa-4x" aria-hidden="true"></i>
-                            </a>
-                            <form id="up-vote-question-{{ $question->id }}" action="/questions/{{$question->id}}/vote" method="POST" style="display:none;">
-                                @csrf
-                                <input type="hiden" name="vote" value="1">
-                            </form>
-                            <span class="votes-count">{{$question->votes_count}}</span>
-                            <a title="This question is not useful" 
-                                class="vote-down {{Auth::guest() ? 'off' : ''}}"
-                                onclick="event.preventDefault(); document.getElementById('down-vote-question-{{ $question->id }}').submit();">
-                                <i class="fas fa-caret-down fa-4x" aria-hidden="true"></i>
-                            </a>
-                            <form id="down-vote-question-{{ $question->id }}" action="/questions/{{$question->id}}/vote" method="POST" style="display:none;">
-                                @csrf
-                                <input type="hiden" name="vote" value="-1">
-                            </form>
+                            <vote :model="{{$question}}" name="question"></vote> 
                             <favorite :question="{{ $question }}"></favorite>
-                            
-                            <form id="favorite-question-{{ $question->id }}" action="/questions/{{$question->id}}/favorites" method="POST" style="display:none;">
-                                @csrf
-                                @if ($question->is_favorited)
-                                    @method('DELETE')                                    
-                                @endif
-                            </form>
                         </div>
                         <div class="media-body">                   
                             {!! parsedown($question->body) !!}

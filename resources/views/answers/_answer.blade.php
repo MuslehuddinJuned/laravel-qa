@@ -1,28 +1,8 @@
 <answer :answer="{{ $answer }}" inline-template>
     <div class="media">
         <div class="d-flex flex-column vote-controls">
-            <a title="This answer is useful"
-            class="vote-up {{Auth::guest() ? 'off' : ''}}"
-            onclick="event.preventDefault(); document.getElementById('up-vote-answer-{{ $answer->id }}').submit();">
-            <i class="fas fa-caret-up fa-4x" aria-hidden="true"></i>
-            </a>
-            <form id="up-vote-answer-{{ $answer->id }}" action="/answers/{{$answer->id}}/vote" method="POST" style="display:none;">
-                @csrf
-                <input type="hiden" name="vote" value="1">
-            </form>
-            <span class="votes-count">{{$answer->votes_count}}</span>
-            <a title="This answer is not useful" 
-                class="vote-down {{Auth::guest() ? 'off' : ''}}"
-                onclick="event.preventDefault(); document.getElementById('down-vote-answer-{{ $answer->id }}').submit();">
-                <i class="fas fa-caret-down fa-4x" aria-hidden="true"></i>
-            </a>
-            <form id="down-vote-answer-{{ $answer->id }}" action="/answers/{{$answer->id}}/vote" method="POST" style="display:none;">
-                @csrf
-                <input type="hiden" name="vote" value="-1">
-            </form>
-
-            <accept :answer="{{ $answer }}"></accept>     
-            
+            <vote :model="{{$answer}}" name="answer"></vote>
+            <accept :answer="{{ $answer }}"></accept>
         </div>
 
 
