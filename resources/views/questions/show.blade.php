@@ -38,12 +38,7 @@
                                 <input type="hiden" name="vote" value="-1">
                             </form>
                             <favorite :question="{{ $question }}"></favorite>
-
-                            {{-- Favorite --}}
-
-
-
-
+                            
                             <form id="favorite-question-{{ $question->id }}" action="/questions/{{$question->id}}/favorites" method="POST" style="display:none;">
                                 @csrf
                                 @if ($question->is_favorited)
