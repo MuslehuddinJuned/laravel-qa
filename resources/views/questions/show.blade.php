@@ -36,23 +36,10 @@
             </div>
         </div>
     </div>
+<answers :answers="{{ $question->answers }}" :count="{{ $question->answers_count }}"></answers>
 
 
-    <div class="row justify-content-center mt-4" v-cloak>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h2>{{$question->answers_count . " " . str_plural('Answer', $question->answers_count)}}</h2>
-                </div>
-                @foreach ($question->answers as $answer)
-                    <div class="card-body">
-                        @include('answers._answer')
-                    </div>
-                    <hr>
-                @endforeach
-            </div>
-        </div>
-    </div>
+    
 
 
     <div class="row justify-content-center mt-4">
