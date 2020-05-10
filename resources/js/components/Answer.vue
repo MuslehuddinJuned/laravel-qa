@@ -1,5 +1,5 @@
 <template>
-        <div class="media">
+        <div class="media my-3">
         <div class="d-flex flex-column vote-controls">
             <vote :model="answer" name="answer"></vote>
             <accept :answer="answer"></accept>
@@ -31,6 +31,7 @@
                     </div>
                 </div>
             </div>
+        <hr>
         </div>
     </div>
 </template>
