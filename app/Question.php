@@ -9,7 +9,7 @@ class Question extends Model
 {
     protected $fillable = ['title', 'body'];
 
-    protected $appends = ['created_date', 'is_favorited', 'favorites_count'];
+    protected $appends = ['created_date', 'is_favorited', 'favorites_count', 'body_html'];
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -39,9 +39,9 @@ class Question extends Model
         return "unanswered";
     }
 
-    // public function getBodyHtmlAttribute(){
-    //     return \Parsedown::instance()->text($this->body);
-    // }
+    public function getBodyHtmlAttribute(){
+        return \Parsedown::instance()->text($this->body);
+    }
 
     public function answers(){
         return $this->hasMany(Answer::class)->orderBy('votes_count', 'DESC');
